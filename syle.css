@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nav-main {
+    border : 5px solid blue;
+    color : white;
+    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    column-gap: 5px;
+}
+
+.nav {
+    background-color: blue;
+    margin : 10px ;
+    padding : 10px ;
+    color: white;
+}
+.task {
+    flex-direction: column;
+    border: 10px solid blue;
+    margin : 10px ;
+    padding: 10px ;
+    background-color: blue;
+    text-align: center;
+    color : white ;
+}
+
+.img {
+    text-align: center;
+}
+
+.space {
+    border: 10px solid blue;
+    width: 100cm;
+    height: 5cm;
+    background-color: blue;
+}

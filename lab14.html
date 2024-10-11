@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lab14css.css">
+</head>
+<body>
+    <h1 id="main">Welcome to Lab14</h1>
+    <div class="avatar">
+        <div id = "profile" style = "position: relative; height: 300px; width: 300px; background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/18aa2243-71fd-4ee0-8e1f-1426d602ad9a/dfnm5m5-55724a02-6303-418d-a46d-04e53cd06f49.jpg/v1/fill/w_1280,h_1280,q_75,strp/buddy_daddies_suwa_rei_icon_by_gintomusashi_dfnm5m5-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcLzE4YWEyMjQzLTcxZmQtNGVlMC04ZTFmLTE0MjZkNjAyYWQ5YVwvZGZubTVtNS01NTcyNGEwMi02MzAzLTQxOGQtYTQ2ZC0wNGU1M2NkMDZmNDkuanBnIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.zzDixCD5IEK9mkOCOMKVgJ7PpKnjhrDom_cDYk4cWPk); border-radius:100%; background-position: center; background-size: cover;"></div>
+            <div style = "position: absolute; bottom:15px; right: 15px; height: 50px; width: 50px; background-color: red; border: 10px solid red; border-radius: 100%; display: flex;">1</div>
+    </div>
+    <br>
+    <div class="form">
+        <label>Username&nbsp;&nbsp;:&nbsp;&nbsp;</label><input type="text" placeholder = "Enter" id = "input"><button onclick="setUsername()">set</button>
+    </div>
+    <br>
+    <div class="form">
+        <label>Profile Image URL&nbsp;&nbsp;:&nbsp;&nbsp;</label><input type="text" placeholder = "Enter" id = "image"><button onclick="setImage()">set</button>
+    </div>
+    <h2 id="main">Phone number lists</h2>
+    <div class="form">
+        </label><input type="text" placeholder = "Name" id = "input">&nbsp;&nbsp;</label><input type="text" placeholder = "Tel" id = "input">&nbsp;&nbsp;<button onclick="setImage()">ADD</button>&nbsp;&nbsp;<button onclick="setImage()">Export</button>
+    </div>
+</body>
+</html>
+
+<script>
+    const username = document.getElementById("main")
+    const input = document.getElementById("input")
+    const profile = document.getElementById("profile")
+
+    function setUsername(){
+        console.log(input.value);
+        username.textContent = input.value;
+        input.value = "";
+        };
+
+    function setImage(){
+        profile.style.backgroundImage = "url(" + image.value + ")";
+    };
+</script>
