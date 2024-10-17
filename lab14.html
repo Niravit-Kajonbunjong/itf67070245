@@ -4,41 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="lab14css.css">
+    <link rel="stylesheet" href="lab14.css">
 </head>
 <body>
-    <h1 id="main">Welcome to Lab14</h1>
-    <div class="avatar">
-        <div id = "profile" style = "position: relative; height: 300px; width: 300px; background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/18aa2243-71fd-4ee0-8e1f-1426d602ad9a/dfnm5m5-55724a02-6303-418d-a46d-04e53cd06f49.jpg/v1/fill/w_1280,h_1280,q_75,strp/buddy_daddies_suwa_rei_icon_by_gintomusashi_dfnm5m5-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcLzE4YWEyMjQzLTcxZmQtNGVlMC04ZTFmLTE0MjZkNjAyYWQ5YVwvZGZubTVtNS01NTcyNGEwMi02MzAzLTQxOGQtYTQ2ZC0wNGU1M2NkMDZmNDkuanBnIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.zzDixCD5IEK9mkOCOMKVgJ7PpKnjhrDom_cDYk4cWPk); border-radius:100%; background-position: center; background-size: cover;"></div>
-            <div style = "position: absolute; bottom:15px; right: 15px; height: 50px; width: 50px; background-color: red; border: 10px solid red; border-radius: 100%; display: flex;">1</div>
+    <div class="flex">
+        <div class="profile" id="profile">
+            <div class="notify">
+                    <p>1</p>
+            </div>
+        </div>
+        <a id="username" class="link" href="https://github.com/multi05369/ITFLab2024?fbclid=IwY2xjawF9aQVleHRuA2FlbQIxMQABHYisdaxTXCic-6llPg6q6_vCpF47LZXOEV5Ng82APMfW8sOWeZgLnk0vmw_aem_F59xXIffcayjqFaX7cWvzQ">Nirawit Kajonbunjong ...245_</a>
+        <div class="input">
+            <label>Set Username</label><input id="input-name" type="text"><button onclick="setName()">set</button>
+            <label>Set Image</label><input id="input-url" type="text"><button onclick="setImg()">set</button>
+        </div>
+
+        <div class="input">
+            <input id="name" type="text">
+            <input id="tel" type="text">
+            <button onclick="addRow()">add</button>
+            <button onclick="saveCSV()">export</button>
+            <table id="table">
+                <tr>
+                    <th>name</th>
+                    <th>phone</th>
+                </tr>
+            </table>
+        </div>
     </div>
-    <br>
-    <div class="form">
-        <label>Username&nbsp;&nbsp;:&nbsp;&nbsp;</label><input type="text" placeholder = "Enter" id = "input"><button onclick="setUsername()">set</button>
-    </div>
-    <br>
-    <div class="form">
-        <label>Profile Image URL&nbsp;&nbsp;:&nbsp;&nbsp;</label><input type="text" placeholder = "Enter" id = "image"><button onclick="setImage()">set</button>
-    </div>
-    <h2 id="main">Phone number lists</h2>
-    <div class="form">
-        </label><input type="text" placeholder = "Name" id = "input">&nbsp;&nbsp;</label><input type="text" placeholder = "Tel" id = "input">&nbsp;&nbsp;<button onclick="setImage()">ADD</button>&nbsp;&nbsp;<button onclick="setImage()">Export</button>
-    </div>
+
+    <script>
+        var telphone = [];
+        const name = document.getElementById("username");
+        const inputName = document.getElementById("input-name");
+        const profile = document.getElementById("profile");
+        const InputUrl = document.getElementById("input-url");
+        const table = document.getElementById("table")
+        const telname = document.getElementById("name")
+        const tel = document.getElementById("tel")
+
+
+        function setName(){
+            name.textContent = inputName.value;
+            inputName.value= "";
+        }
+        function setImg(){
+            profile.style.backgroundImage = "url(" + InputUrl.value + ")";
+            InputUrl.value="";
+        }
+        function addRow(){
+            const row = document.createElement("tr");
+            const cell1 = document.createElement("td");
+            const cell2 = document.createElement("td");
+            cell1.textContent = telname.value;
+            cell2.textContent = tel.value;
+            row.appendChild(cell1);
+            row.appendChild(cell2);
+            table.appendChild(row)
+            
+            let arr = [];
+            arr.push(telname.value);
+            arr.push(tel.value);
+            telphone.push(arr);
+            console.log(telphone);
+            telname.value="";
+            tel.value="";
+        }
+        function saveCSV() {
+            const csvContent = telphone.map(row => row.join(",")).join("\n"); // Convert array to CSV string
+            const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "data.csv");
+            link.style.visibility = "hidden";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script> 
 </body>
 </html>
-
-<script>
-    const username = document.getElementById("main")
-    const input = document.getElementById("input")
-    const profile = document.getElementById("profile")
-
-    function setUsername(){
-        console.log(input.value);
-        username.textContent = input.value;
-        input.value = "";
-        };
-
-    function setImage(){
-        profile.style.backgroundImage = "url(" + image.value + ")";
-    };
-</script>
